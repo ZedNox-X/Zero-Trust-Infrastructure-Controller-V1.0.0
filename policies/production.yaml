@@ -1,0 +1,8 @@
+name: production-zero-trust
+enabled: true
+priority: 100
+conditions:
+  environment: production
+  require_mfa: true
+  trusted_device: true
+  require_approval: true

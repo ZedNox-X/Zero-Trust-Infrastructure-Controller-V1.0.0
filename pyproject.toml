@@ -1,0 +1,18 @@
+[build-system]
+requires=["setuptools>=69","wheel"]
+build-backend="setuptools.build_meta"
+[project]
+name="zero-trust-infrastructure-controller"
+version="1.0.0"
+description="Policy-driven zero-trust controller for infrastructure security decisions"
+requires-python=">=3.12"
+dependencies=["fastapi>=0.115,<1","uvicorn[standard]>=0.34,<1","pydantic>=2.10,<3","pydantic-settings>=2.7,<3","PyYAML>=6,<7","SQLAlchemy>=2,<3","psycopg[binary]>=3.2,<4","redis>=5,<6","prometheus-client>=0.21,<1"]
+[project.optional-dependencies]
+dev=["pytest>=8,<9","httpx>=0.28,<1","ruff>=0.9,<1"]
+[tool.setuptools.packages.find]
+include=["controller*"]
+[tool.ruff]
+line-length=100
+target-version="py312"
+[tool.pytest.ini_options]
+testpaths=["tests"]

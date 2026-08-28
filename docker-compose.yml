@@ -1,0 +1,17 @@
+services:
+  controller:
+    build: .
+    environment:
+      DATABASE_URL: postgresql+psycopg://ztc:ztc@postgres:5432/ztc
+      API_TOKEN: ${API_TOKEN:-dev-token}
+      POLICY_DIR: /app/policies
+    ports: ["8000:8000"]
+    depends_on: {postgres: {condition: service_healthy}}
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+  postgres:
+    image: postgres:16-alpine
+    environment: {POSTGRES_USER: ztc, POSTGRES_PASSWORD: ztc, POSTGRES_DB: ztc}
+    healthcheck: {test: ["CMD-SHELL","pg_isready -U ztc -d ztc"], interval: 5s, timeout: 5s, retries: 10}
+    volumes: [postgres-data:/var/lib/postgresql/data]
+volumes: {postgres-data: {}}

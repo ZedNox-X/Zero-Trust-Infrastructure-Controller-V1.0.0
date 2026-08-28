@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: zero-trust-controller, namespace: zero-trust-controller}
+spec:
+  replicas: 2
+  selector: {matchLabels: {app: zero-trust-controller}}
+  template:
+    metadata: {labels: {app: zero-trust-controller}}
+    spec:
+      containers:
+        - name: controller
+          image: ghcr.io/REPLACE_ME/zero-trust-infrastructure-controller:latest
+          ports: [{containerPort: 8000}]
+          securityContext: {runAsNonRoot: true, allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, capabilities: {drop: [ALL]}}
+          resources: {requests: {cpu: 100m, memory: 128Mi}, limits: {cpu: 500m, memory: 512Mi}}

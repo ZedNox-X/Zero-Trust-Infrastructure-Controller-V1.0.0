@@ -1,0 +1,6 @@
+name: container-security-baseline
+enabled: true
+priority: 90
+conditions:
+  environment: production
+  require_mfa: true
