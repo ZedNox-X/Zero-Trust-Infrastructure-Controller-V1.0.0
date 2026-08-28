@@ -18,6 +18,8 @@ A GitHub-ready security engineering reference implementation that evaluates iden
 - Kubernetes manifests
 - CI + Trivy container scanning
 - Unit tests and demo payloads
+  <img width="1536" height="1024" alt="Zero-Trust Infrastructure Controller" src="https://github.com/user-attachments/assets/7d7a2ee0-d2ef-45c7-a592-d3daf5714cb5" />
+
 
 ## Architecture
 ```text
