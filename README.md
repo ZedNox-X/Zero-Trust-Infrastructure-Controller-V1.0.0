@@ -73,4 +73,4 @@ docs/             architecture and threat model
 ```
 
 ## License
-Apache-2.0.0
+Apache-2.0.1
